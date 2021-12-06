@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use phpDocumentor\Reflection\Types\Null_;
+use App\Http\Requests\FormSeriesRequest;
 
 class SeriesController extends Controller
 {
@@ -20,10 +20,7 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(Request $request){
-        $request->validate([
-            'nome' => 'required|min:2'
-        ]);
+    public function store(FormSeriesRequest $request){
         $nome = $request->nome;
         $serie = new Serie;
         $serie->nome = $nome;

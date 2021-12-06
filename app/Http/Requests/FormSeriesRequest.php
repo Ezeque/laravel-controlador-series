@@ -13,7 +13,7 @@ class FormSeriesRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class FormSeriesRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required|min:2'
         ];
     }
-}
+
+    public function messages(){
+        return[
+            'required' => 'O campo :attribute precisa ser preenchido',
+            'min' => 'O campo :attribute precisa ter ao menos :min caracteres',
+        ];
+    }
+};
