@@ -21,11 +21,12 @@ class SeriesController extends Controller
     }
 
     public function store(FormSeriesRequest $request){
-        $nome = $request->nome;
-        $serie = new Serie;
-        $serie->nome = $nome;
+        $serie = Serie::create(['nome' => $request->nome]);
+        for($i = 1; $i<= $request->qtd_temporadas; $i++){
+            $serie->temporadas()->create(['numero' => $i]);
+        }
         if($serie->save())
-            return redirect()->route('index')->with('msg',"{$nome} adicionada a sua lista de séries!");
+            return redirect()->route('index')->with('msg',"{$serie->nome} adicionada a sua lista de séries!");
     }
 
     public function destroy(Request $request){
