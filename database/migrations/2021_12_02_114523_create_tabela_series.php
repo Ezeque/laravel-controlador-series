@@ -13,10 +13,9 @@ class CreateTabelaSeries extends Migration
      */
     public function up()
     {
-        Schema::create('series', function (Blueprint $table) {
+        Schema::create('tb_series', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('nome');
-            $table->integer('episodios-totais');
-            $table->integer('episodios-assistidos');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateTabelaSeries extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tabela_series');
+        
     }
 }

@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/series', [SeriesController::class, 'index']);
-Route::get('/series/create', [SeriesController::class, 'create']);
+Route::get('/series', [SeriesController::class, 'index'])->name('index');
+Route::get('/series/create', [SeriesController::class, 'create'])->name('criar-serie');
 Route::post('/series/create', [SeriesController::class, 'store']);
-
+Route::delete('/series/remove/{id}', [SeriesController::class, 'destroy'])->name('excluir-serie');
