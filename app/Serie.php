@@ -7,7 +7,7 @@ use App\Models\Temporada;
 
 class Serie extends Model{
 
-    protected $table = 'tb_series';
+    protected $table = 'series';
     public $timestamps = false;
     protected $fillable = ['nome'];
 

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Serie;
+use App\Models\Temporada;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\FormSeriesRequest;
+use App\Services\CreateSeries;
 
 class SeriesController extends Controller
 {
@@ -20,13 +22,10 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(FormSeriesRequest $request){
-        $serie = Serie::create(['nome' => $request->nome]);
-        for($i = 1; $i<= $request->qtd_temporadas; $i++){
-            $serie->temporadas()->create(['numero' => $i]);
-        }
-        if($serie->save())
-            return redirect()->route('index')->with('msg',"{$serie->nome} adicionada a sua lista de séries!");
+    public function store(FormSeriesRequest $request, CreateSeries $criador){
+        $series = $criador->create($request->nome, $request->qtd_temporadas, $request->qtd_episodios);
+        return redirect()->route('index')->with('msg',"{$series->nome} adicionada a sua lista de séries!");
+        
     }
 
     public function destroy(Request $request){

@@ -16,8 +16,8 @@ class CreateEpisodiosTable extends Migration
         Schema::create('episodios', function (Blueprint $table) {
             $table->id();
             $table->integer('numero');
-            $table->integer('temporadas_id');
-            $table->foreign('temporadas_id')->references('id')->on('temporadas');
+            $table->integer('temporada_id');
+            $table->foreign('temporada_id')->references('id')->on('temporadas');
         });
     }
 

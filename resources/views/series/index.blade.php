@@ -9,14 +9,20 @@ Lista de séries
 
 <ul class="list-group">
     <?php foreach($series as $series): ?>
-    <li class="list-group-item d-flex justify-content-between align-items-center">{{$series->nome}}
-        <form class="" method="post" action="/series/remove/{{$series->id}}" 
-        onsubmit="return confirm('Tem certeza que deseja excluir {{$series->nome}} da sua lista?') ">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{$series->nome}}
+
+        <form class="" method="post" action="/series/remove/{{$series->id}}"
+            onsubmit="return confirm('Tem certeza que deseja excluir {{$series->nome}} da sua lista?') ">
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger">Excluir</button>
+            <span class="d-flex">
+                <a href="/series/{{$series->id}}/temporadas" class="btn btn-info btn-external mr-2"></a>
+                <button class="btn btn-danger">Excluir</button>
+            </span>
         </form>
     </li>
+
     <?php endforeach; ?>
 </ul>
 @endsection
