@@ -18,9 +18,8 @@
 
 <body>
     <div class="container">
-        <div class="jumbotron d-flex justify-content-between">
+        <div class="jumbotron">
             <h1>@yield('cabecalho')</h1>
-            <a href="/series"><button class="btn btn-secondary">Home</button></a>
         </div>
         <main class="mb-5">
             @if(session('msg'))

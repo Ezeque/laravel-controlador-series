@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layoutindex')
 
 @section('cabecalho')
 Lista de séries
@@ -14,7 +14,7 @@ Lista de séries
 
         <!-- INPUT EDITAR SÉRIE -->
         <div class="input-group w-50" hidden id="input-serie-{{ $series->id }}">
-            <input id="name-input" type="text" class="form-control" value="{{ $series->nome }}">
+            <input id="name-input-{{$series->id}}" type="text" class="form-control" value="{{ $series->nome }}">
             <div class="input-group-append">
                 <button class="btn btn-primary" onclick="alterSerie('{{$series->id}}')">
                     <i class="fas fa-check"></i>
@@ -57,7 +57,7 @@ Lista de séries
 
     function alterSerie(input_id){
         let formData = new FormData();
-        let nome = $('#name-input').val();
+        let nome = $('#name-input-' + input_id).val();
         id_serie = "#serie-nome-" + input_id;
         const token = $("input[name='_token']").val();
         formData.append('_token', token);

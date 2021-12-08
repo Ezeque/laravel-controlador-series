@@ -18,7 +18,7 @@ Adicionar Série
     <div class="row">
         @csrf
         <div class="col col-8"><label for="nome">Nome</label>
-            <Input type="text" class="form-control" name="nome" id="nome"></Input>
+            <Input type="text" class="form-control" name="nome" id="nome" autocomplete="off"></Input>
         </div>
         <div class="col col-2"><label for="qtd_temporadas">N. Temporadas</label>
             <Input type="number" class="form-control" name="qtd_temporadas" id="qtd_temporadas"></Input>
