@@ -25,3 +25,4 @@ Route::get('/series/create', [SeriesController::class, 'create'])->name('criar-s
 Route::post('/series/create', [SeriesController::class, 'store']);
 Route::delete('/series/remove/{id}', [SeriesController::class, 'destroy'])->name('excluir-serie');
 Route::get('/series/{id}/temporadas', [TemporadasController::class, 'index'])->name('temporadas');
+Route::post('/series/{id}/alter', [SeriesController::class, 'alter']);

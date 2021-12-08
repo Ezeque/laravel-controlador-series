@@ -10,6 +10,8 @@ use Illuminate\Routing\Controller;
 use App\Http\Requests\FormSeriesRequest;
 use App\Models\Episodio;
 use App\Services\CreateSeries;
+use App\Services\DestroySeries;
+use phpDocumentor\Reflection\Types\Null_;
 
 class SeriesController extends Controller
 {
@@ -29,18 +31,16 @@ class SeriesController extends Controller
         
     }
 
-    public function destroy(Request $request){
-        $series = Serie::find($request->id);
-        echo "<script>console.log($series)</script>";
-        $series->temporadas->each(function(Temporada $temporada){
-            $temporada->episodios->each(function(Episodio $episodio){
-                $episodio->delete();
-            }
-        );
-        $temporada->delete();
-    });
-        $series->delete();
-    return redirect()->route('index')->with('msg-delete',"{$request->nome} foi removida da sua lista de séries");
+    public function destroy(Request $request, DestroySeries $destruidor){
+    $series = $destruidor->destroy($request);   
+    return redirect()->route('index')->with('msg-delete',"{$series} foi removida da sua lista de séries");
 
     }
+
+    public function alter(Request $request){
+        $new_name = $request->nome;
+        $series = Serie::find($request->id);
+        $series->nome = $new_name;
+        $series->save();  
+        }
 }
