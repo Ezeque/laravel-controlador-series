@@ -26,3 +26,4 @@ Route::post('/series/create', [SeriesController::class, 'store']);
 Route::delete('/series/remove/{id}', [SeriesController::class, 'destroy'])->name('excluir-serie');
 Route::get('/series/{id}/temporadas', [TemporadasController::class, 'index'])->name('temporadas');
 Route::post('/series/{id}/alter', [SeriesController::class, 'alter']);
+Route::post('/series/{id}/temporadas/salvar', [TemporadasController::class, 'store'])->name('store');

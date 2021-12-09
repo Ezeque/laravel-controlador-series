@@ -16,9 +16,9 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
-<body>
-    <div class="container">
-        <div class="jumbotron d-flex justify-content-between">
+<body class="bg-dark">
+    <div class="container text-white">
+        <div class="jumbotron d-flex justify-content-between mt-3">
             <h1>@yield('cabecalho')</h1>
             <a href="/series"><button class="btn btn-secondary">Home</button></a>
         </div>
@@ -40,6 +40,16 @@
         @yield('conteudo')
     </div>
 
+    <script>
+        function toggleEpisodios(e){
+            if($('#'+e).attr('hidden')){
+                $('#'+e).removeAttr('hidden');
+            }
+            else{
+                $('#'+e).attr('hidden', true)
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -16,9 +16,9 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="bg-dark">
     <div class="container">
-        <div class="jumbotron">
+        <div class="jumbotron text-white">
             <h1>@yield('cabecalho')</h1>
         </div>
         <main class="mb-5">
