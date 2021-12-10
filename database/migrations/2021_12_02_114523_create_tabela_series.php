@@ -16,6 +16,7 @@ class CreateTabelaSeries extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
+            $table->text('descricao')->default(Null)->nullable();
         });
     }
 

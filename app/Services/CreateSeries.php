@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\DB;
 
 class CreateSeries{
 
-    public function create(string $nome_serie, int $qtd_temporadas, int $qtd_episodios):Serie{
+    public function create(string $nome_serie, int $qtd_temporadas, int $qtd_episodios, $descricao):Serie{
         DB::beginTransaction();
-        $serie = Serie::create(['nome' => $nome_serie]);
+        $serie = Serie::create(['nome' => $nome_serie, 'descricao' => $descricao]);
         for ($i=1; $i <= $qtd_temporadas; $i++) { 
                 $temporada=$serie->temporadas()->create(['numero' => $i]);
                 for ($j=1; $j <= $qtd_episodios ; $j++) { 

@@ -7,6 +7,11 @@ Temporadas
 
 @section('conteudo')
 
+<div class="col-7 mt-3 mb-2">
+    <h4>Descrição:</h4>
+    <div class="border-left">{{$series->descricao}}</div>
+</div>
+
 @foreach($temporadas as $temporadas)
 <a href="#" class="text-decoration-none">
     <ul class="list-group" onclick="toggleEpisodios('episodios-temporada-{{$temporadas->numero}}')"
@@ -15,7 +20,8 @@ Temporadas
         <li class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white"
             cursor="pointer">
             {{$temporadas->numero}}º Temporada
-            <span class="badge bg-dark">{{$temporadas->getEpsAssistidos()->count()}}/{{$temporadas->episodios->count()}}</span>
+            <span
+                class="badge bg-dark">{{$temporadas->getEpsAssistidos()->count()}}/{{$temporadas->episodios->count()}}</span>
         </li>
     </ul>
 </a>
@@ -26,8 +32,8 @@ Temporadas
         @foreach($temporadas->episodios as $episodio)
         <li class="list-group-item d-flex justify-content-between align-items-center">
             Episódio {{$episodio->numero}}
-            <input type="checkbox" name="episodios[]" value="{{$episodio->id}}" 
-            {{($episodio->assistido) ? 'checked' : ''}} >
+            <input type="checkbox" name="episodios[]" value="{{$episodio->id}}"
+                {{($episodio->assistido) ? 'checked' : ''}}>
         </li>
         @endforeach
         <button class="btn btn-primary col-1 mt-2">Salvar</button>

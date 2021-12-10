@@ -11,6 +11,7 @@ use App\Http\Requests\FormSeriesRequest;
 use App\Models\Episodio;
 use App\Services\CreateSeries;
 use App\Services\DestroySeries;
+use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Null_;
 
 class SeriesController extends Controller
@@ -21,12 +22,14 @@ class SeriesController extends Controller
     }
 
     public function create(){
-
+        if(!Auth::Check()){
+            redirect()->route('index');
+        }
         return view('series.create');
     }
 
     public function store(FormSeriesRequest $request, CreateSeries $criador){
-        $series = $criador->create($request->nome, $request->qtd_temporadas, $request->qtd_episodios);
+        $series = $criador->create($request->nome, $request->qtd_temporadas, $request->qtd_episodios, $request->descricao);
         return redirect()->route('index')->with('msg',"{$series->nome} adicionada a sua lista de séries!");
         
     }

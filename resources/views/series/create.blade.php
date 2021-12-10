@@ -26,6 +26,9 @@ Adicionar Série
         <div class="col col-2"><label for="qtd_episodios">N. Episodios</label>
             <Input type="number" class="form-control" name="qtd_episodios" id="qtd_episodios"></Input>
         </div>
+        <div class="col mt-2"><label for="descricao">Descrição (Opcional)</label>
+            <textarea style="resize: none;" class="form-control h-75" name="descricao" id="descricao"></textarea>
+        </div>
     </div>
     <button class="btn btn-primary mt-3">Adicionar</button>
 </form>
